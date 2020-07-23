@@ -1,11 +1,21 @@
 package com.example.javalib;
 
+import java.awt.Color;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
 public class MyClass {
+
+//    public static void a(Integer integer){
+//        integer=5;
+//    }
+
     public static void main(String[] args) {
+//        int testa=6;
+//        a(testa);
+//        System.out.println("a=="+testa);
+
         List<String> list = new ArrayList<>();
 
         for(int i=0;i<10;i++){
@@ -70,6 +80,33 @@ public class MyClass {
         *   SparseArray<String> stringSparseArray = new SparseArray<>();
         * */
 
+
+        /*
+        * String的优化,String类在执行+操作时,内部会创建一个StringBuilder对象进行,然后进行拼接操作,
+        * 所以优化方向在外部创建一个StringBuilder对象执行+操作,就不需要每次创建StringBuilder对象了
+        * */
+        String a="213";
+        StringBuilder stringBuilder = new StringBuilder("213");
+        for(int i=0;i<10;i++){
+            //优化代码i
+            stringBuilder.append(i);
+            System.out.println(stringBuilder);
+            //未优化代码,拼接代码
+            a=a+i;
+        }
+
+
+        //Android颜色数组Color.parse(),他会将传入的字符串解析,因为解析的每次颜色都一致,所以初始化的时候解析一次就行,如果在多次调用中解析,那么就会造成内存抖动,所以创建的时候直接将颜色字符串解析,只执行一次
+     /*   int colorArr[]=new int[8];
+       for (int i=0;i<colorArr.length;i++){
+           colorArr[i]=Color.parseColor("#123");
+       }*/
+
+
+        //User类创建了对象复用池,最大复用是10个,在Android模块里,此处是java模块
+
+
+        //Manager单例模式导致的内存泄露,在Android模块中的Manager类
 
     }
 }
