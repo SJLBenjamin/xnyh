@@ -47,6 +47,8 @@ public class BitMapAdapter extends RecyclerView.Adapter<BitMapAdapter.BitMapHold
             bitmapFromMemory = ImageCache.getInstance().getResult(80, 80, 1);//从复用池中查看有没有可用对象
             //然后创建需要用的一个bitmap,此处不需要判断result是否为null,是因为resizeBitmap方法中decodeResource方法,如果传入的bitmap为null,则会自动创建一个
             bitmapFromMemory = BitmapYaSuo.resizeBitmap(mContext, R.mipmap.icon_mv_p, 80, 80, false, bitmapFromMemory);
+            //将bitmap放入最近最少使用的内存中
+            ImageCache.getInstance().putBitmap2Memory(String.valueOf(position),bitmapFromMemory);
         }
         holder.mBitmap.setImageBitmap(bitmapFromMemory);
     }

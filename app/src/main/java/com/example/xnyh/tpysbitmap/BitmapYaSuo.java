@@ -51,7 +51,7 @@ static String TAG ="BitmapYaSuo";
 
         // 复用, inMutable 为true 表示图片容易改变,需要这样设置才能实现图片复用
         options.inMutable = true;
-        //设置复用的bitMap对象,如果此对象为null的话,那么
+        //设置复用的bitMap对象,如果此对象为null的话,那么BitmapFactory.decodeResource会创建一个新的bitmap
         options.inBitmap = reusable;
 
         return BitmapFactory.decodeResource(resources, id, options);
