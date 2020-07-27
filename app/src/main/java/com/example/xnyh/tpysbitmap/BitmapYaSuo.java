@@ -71,5 +71,4 @@ static String TAG ="BitmapYaSuo";
        return yasuo;
    }
 
-
 }
